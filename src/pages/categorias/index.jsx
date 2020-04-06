@@ -83,6 +83,7 @@ class Index extends Component {
       type: 'categories/categoriesDelete',
       payload: id,
     });
+    console.log(id);
   };
 
   handleOnChange = (value, campo) => {
@@ -111,7 +112,11 @@ class Index extends Component {
 
   // Apagando dados do campo de filtro, convertendo para uma string vazia
   resetSearch = () => {
-    this.setState(this.baseState);
+    const { dispatch } = this.props;
+
+    dispatch({ type: 'categories/listCategorias', payload: {} });
+
+    this.setState({ searchValue: '' });
   };
 
   handleSearch = () => {
@@ -187,7 +192,7 @@ class Index extends Component {
                   <Popconfirm
                     placement="topRight"
                     title="Deseja realmente excluir o item?"
-                    onConfirm={() => this.handleDelete(item.id)}
+                    onConfirm={() => this.handleDelete(item)}
                     okText="Sim, excluir"
                     cancelText="Não, cancelar"
                   >

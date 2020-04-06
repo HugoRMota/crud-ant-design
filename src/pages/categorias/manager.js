@@ -55,6 +55,17 @@ const Manager = ({
         <Col span={8}>
           <Form.Item label="Cycle Time">
             {getFieldDecorator('cycle_time', {
+              initialValue: current.cycle_time || '',
+              rules: [{ required: true, message: 'Campo Obrigatorio' }],
+            })(<InputNumber />)}
+          </Form.Item>
+
+          {/* 
+          
+          Manipulação de hora
+          
+          <Form.Item label="Cycle Time">
+            {getFieldDecorator('cycle_time', {
               valuePropName: 'cycle',
               rules: [
                 {
@@ -70,9 +81,20 @@ const Manager = ({
                 format="DD/MM/YYYY"
               />,
             )}
-          </Form.Item>
+          </Form.Item> */}
         </Col>
         <Col span={8}>
+          <Form.Item label="Reserve Time">
+            {getFieldDecorator('reserve_time', {
+              initialValue: current.reserve_time || '',
+              rules: [{ required: true, message: 'Campo Obrigatorio' }],
+            })(<InputNumber />)}
+          </Form.Item>
+
+          {/*
+          
+          // Manipulaçao  de data e hora
+
           <Form.Item label="Reserve time">
             {getFieldDecorator('reserve_time', {
               valuePropName: 'time',
@@ -90,7 +112,7 @@ const Manager = ({
                 format="HH:mm"
               />,
             )}
-          </Form.Item>
+          </Form.Item> */}
         </Col>
       </Row>
     </Form>

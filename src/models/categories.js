@@ -22,7 +22,9 @@ export default {
     // Quando tiver que ordernar os dados listar payload onde virá os dados
     *listCategorias({ payload }, { call, put }) {
       try {
-        const { success, data } = yield call(categories.listCategorias, payload);
+        const {
+          data: { success, data },
+        } = yield call(categories.listCategorias, payload);
 
         const pagination = {
           current: data.page,
@@ -42,7 +44,9 @@ export default {
 
     *categoriesPost({ payload }, { call, put }) {
       try {
-        const { success, message } = yield call(categories.categoriesPost, payload);
+        const {
+          data: { success, message, data },
+        } = yield call(categories.categoriesPost, payload);
         if (success) {
           notification.success({ message });
           yield put({ type: 'listCategorias' });
@@ -56,7 +60,9 @@ export default {
 
     *categoriesPut({ payload }, { call, put }) {
       try {
-        const { success, message } = yield call(categories.categoriesPut, payload);
+        const {
+          data: { success, message, data },
+        } = yield call(categories.categoriesPut, payload);
         if (success) {
           notification.success({ message });
           yield put({ type: 'listCategorias' });
@@ -70,7 +76,9 @@ export default {
 
     *categoriesDelete({ payload }, { call, put }) {
       try {
-        const { success, message } = yield call(categories.categoriesDelete, payload);
+        const {
+          data: { success, message, data },
+        } = yield call(categories.categoriesDelete, payload);
         if (success) {
           notification.success({ message });
           yield put({ type: 'listCategorias' });
