@@ -50,6 +50,21 @@ export default [
                 icon: 'arrow-right',
                 component: './categorias',
               },
+              {
+                path: '/categories-drawer',
+
+                name: 'Categorias com Drawer',
+                icon: 'arrow-right',
+                component: './categories-drawer',
+              },
+
+              {
+                path: '/categories-page/edit/:id',
+
+                name: 'Categorias em outra View',
+                icon: 'arrow-right',
+                component: './categories-page',
+              },
             ],
           },
 

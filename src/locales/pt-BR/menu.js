@@ -53,4 +53,6 @@ export default {
   'menu.Cadastro.Estados': 'Estados',
   'menu.Cadastro.Cidades': 'Cidades',
   'menu.Cadastro.Categorias': 'Categorias',
+  'menu.Cadastro.Categorias com Drawer': 'Categorias com Drawer',
+  'menu.Cadastro.Categorias em outra View': 'Categorias em outra View',
 };
