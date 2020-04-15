@@ -55,4 +55,5 @@ export default {
   'menu.Cadastro.Categorias': 'Categorias',
   'menu.Cadastro.Categorias com Drawer': 'Categorias com Drawer',
   'menu.Cadastro.Categorias em outra View': 'Categorias em outra View',
+  'menu.gql': 'Graphql',
 };

@@ -59,4 +59,18 @@ export default {
       json: true,
     });
   },
+
+  async showCategories(params) {
+    return axios({
+      url: `https://labbe-test.herokuapp.com/categories/${params.id}`,
+      method: 'GET',
+      data: params,
+      headers: {
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTU4NTg0MTk5NH0.kyyRU3-j20lPBChJZdEKR3w171--93cFwFiVGzkbXLU',
+        'Content-Type': 'application/json',
+      },
+      json: true,
+    });
+  },
 };

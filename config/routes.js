@@ -25,6 +25,11 @@ export default [
         authority: ['admin', 'user'],
         routes: [
           {
+            path: '/graphqlPage',
+            name: 'gql',
+            component: './graphPage',
+          },
+          {
             path: '/',
             name: 'Cadastro',
             icon: 'aliwangwang',
@@ -59,11 +64,19 @@ export default [
               },
 
               {
-                path: '/categories-page/edit/:id',
-
+                path: '/categories-page',
                 name: 'Categorias em outra View',
                 icon: 'arrow-right',
                 component: './categories-page',
+              },
+
+              {
+                path: '/categories-page/edit',
+                component: './categories-page/edit',
+              },
+              {
+                path: '/categories-page/edit/:id',
+                component: './categories-page/edit',
               },
             ],
           },

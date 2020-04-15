@@ -56,6 +56,15 @@ const plugins = [
       autoAddMenu: true,
     },
   ],
+  [
+    'umi-plugin-apollo',
+    {
+      uri: 'https://med365-devs.herokuapp.com/api/v1',
+      mock: false,
+      hooksImportFrom: 'react-apollo-hooks',
+      options: '../src/utils/apollo',
+    },
+  ],
 ];
 
 if (isAntDesignProPreview) {

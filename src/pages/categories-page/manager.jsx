@@ -1,6 +1,5 @@
-import React from 'react';
-import { Modal, Form, Input, InputNumber, Row, Col, DatePicker, TimePicker } from 'antd';
-
+import React, { Component, Fragment } from 'react';
+import { Modal, Form, Button, Input, InputNumber, Row, Col } from 'antd';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
@@ -13,7 +12,6 @@ const Manager = ({
   getFieldDecorator,
   handleCancelModal,
   handleSubmit,
-  handleOnChange,
 }) => (
   <Modal
     destroyOnClose

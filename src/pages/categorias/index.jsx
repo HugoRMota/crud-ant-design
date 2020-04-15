@@ -83,7 +83,6 @@ class Index extends Component {
       type: 'categories/categoriesDelete',
       payload: id,
     });
-    console.log(id);
   };
 
   handleOnChange = (value, campo) => {

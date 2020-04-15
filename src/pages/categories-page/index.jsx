@@ -3,6 +3,8 @@ import { Card, List, Button, Popconfirm, Form } from 'antd';
 import { connect } from 'dva';
 import moment from 'moment';
 import 'moment/locale/pt-br';
+import { router } from 'umi';
+import { createAction } from '@/utils/helpers';
 
 moment.locale('pt-BR');
 
@@ -11,50 +13,46 @@ const { Meta } = Item;
 
 @Form.create()
 class Index extends Component {
-  state = {
-    visible: false,
-    current: {},
-  };
+  state = {};
 
   componentDidMount() {
-    const {
-      dispatch,
-      match: { params },
-    } = this.props;
-    dispatch({ type: 'categories/listCategorias', payload: {} });
-    // dispatch({ type: 'categories/showCategoria', payload: {id:params.id} });
+    const { dispatch } = this.props;
+    dispatch(createAction('categories/listCategorias')());
   }
 
-  handleShowModal = () => {
-    this.setState({ current: {}, visible: true, drawerTitle: 'Cadastrar' });
+  handleShowPage = () => {
+    const { dispatch } = this.props;
+    dispatch(createAction('categories/updateState')({ current: {} }));
+    router.push(`/categories-page/edit`);
   };
 
-  handleDelete = current => {
+  handleEditPage = item => {
+    const { dispatch } = this.props;
+    dispatch(createAction('categories/updateState')({ current: item }));
+
+    router.push(`/categories-page/edit/${item.id}`);
+  };
+
+  handleDelete = id => {
     const { dispatch } = this.props;
     dispatch({
       type: 'categories/categoriesDelete',
-      payload: current,
+      payload: id,
     });
   };
 
   render() {
     const {
-      form: { getFieldDecorator },
       categories: {
         dados: { pagination, list },
       },
     } = this.props;
 
-    const { current } = this.state;
-    const props = {
-      current,
-      getFieldDecorator,
-    };
     return (
       <Fragment>
         <Card
           title={
-            <Button type="primary" icon="plus" onClick={this.handleShowModal}>
+            <Button type="primary" icon="plus" onClick={this.handleShowPage}>
               Novo
             </Button>
           }
@@ -65,17 +63,14 @@ class Index extends Component {
             pagination={{ ...pagination }}
             renderItem={item => (
               <Item
-                aciton={[
-                  <Button
-                    type="primary"
-                    onClick={() => router.push(`/categories-page/edit/${item.id}`)}
-                  >
+                actions={[
+                  <Button type="primary" onClick={() => this.handleEditPage(item)}>
                     Editar
                   </Button>,
                   <Popconfirm
                     placement="topRight"
                     title="Deseja realmente exclui?"
-                    onConfirm={() => this.handleDelete}
+                    onConfirm={() => this.handleDelete(item)}
                     okText="Sim, excluir"
                     cancelText="Não, cancelar"
                   >
